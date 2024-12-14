@@ -6,29 +6,18 @@
 <body>
 <h1>Jogo do Milhão</h1>
 <p th:text="${pergunta.enunciado}"></p>
-<!--<form action="/jogo/responder" method="post">-->
-<!--    <input type="hidden" name="perguntaId" th:value="${pergunta.id}">-->
-<!--    <ul>-->
-<!--        <li th:each="alt, idx : ${pergunta.alternativas}">-->
-<!--            <input type="radio" th:value="${idx}" name="resposta" th:id="'alt' + ${idx}">-->
-<!--            <label th:for="'alt' + ${idx}" th:text="${alt}"></label>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--    <button type="submit">Responder</button>-->
-<!--</form>-->
-
 <form action="/jogo/responder" method="post">
-    <!-- Campo oculto para armazenar o ID da pergunta -->
-    <input type="hidden" name="perguntaId" id="pergunta.id">
-
-    <ul id="alternativas">
-        <!-- Alternativas serão geradas dinamicamente aqui -->
+    <input type="hidden" name="perguntaId" th:value="${pergunta.id}">
+    <ul>
+        <li th:each="alt, idx : ${pergunta.alternativas}">
+            <input type="radio" th:value="${idx}" name="resposta" th:id="'alt' + ${idx}">
+            <label th:for="'alt' + ${idx}" th:text="${alt.getAlternativa()}"></label>
+        </li>
     </ul>
-
     <button type="submit">Responder</button>
 </form>
 
-<script th:src="@{../static/scrips.js}"></script> <!-- Incluindo o arquivo JS -->
+
 
 
 </body>

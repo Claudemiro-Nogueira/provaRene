@@ -60,11 +60,11 @@ public class JogoController {
     }
 
 
-//    @PostMapping("/responder")
-//    public String responderPergunta(@RequestParam int resposta, @RequestParam Long perguntaId, Model model) {
-//        Pergunta pergunta = perguntaService.getPerguntaById(perguntaId);
-//        boolean acertou = pergunta.getRespostaCorreta() == resposta;
-//        model.addAttribute("acertou", acertou);
-//        return "resultado";
-//    }
+    @PostMapping("/responder")
+    public String responderPergunta(@RequestParam int resposta, @RequestParam Long perguntaId, Model model) {
+        Pergunta pergunta = perguntaService.getPerguntaById(perguntaId);
+        boolean acertou = pergunta.getRespostaCorreta() == resposta;
+        model.addAttribute("acertou", acertou);
+        return "resultado";
+    }
 }
